@@ -1,0 +1,52 @@
+targets:
+
+  DemoProject:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    
+    sources: [Sources]
+    
+    info:
+      path: "Sources/Info.plist"
+      properties:
+        UILaunchStoryboardName: LaunchScreen.storyboard
+    
+    dependencies:
+      # Local packages
+      - package: Styles
+        product: Styles
+        
+      # Third-party packages
+      - package: ComposableArchitecture
+      
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: uk.creed.demoproject
+      DEVELOPMENT_TEAM: P5DLG93V76
+      OTHER_SWIFT_FLAGS: -Onone -Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100
+    
+    preBuildScripts:
+            - path: "Scripts/RunScripts.sh"
+              name: Run Scripts
+            - path: "Scripts/BuildTools.sh"
+              name: Run BuildTools
+
+  DemoProjectUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    
+    sources: [UnitTests]
+    
+    dependencies:
+      - target: DemoProject
+
+  DemoProjectUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "15.0"
+    
+    sources: [UITests]
+    
+    dependencies:
+      - target: DemoProject

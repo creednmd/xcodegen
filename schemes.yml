@@ -1,0 +1,24 @@
+schemes:
+
+    DemoProject:
+        build:
+            targets:
+                DemoProject: all
+                DemoProjectUnitTests: [test]
+                
+        test:
+            targets:
+                - name: DemoProjectUnitTests
+                  randomExecutionOrder: true
+                  parallelizable: true
+
+    DemoProjectUITests:
+        build:
+            targets:
+                DemoProject: all
+                DemoProjectUnitTests: [test]
+        test:
+            targets:
+                - name: DemoProjectUITests
+                  randomExecutionOrder: true
+                  parallelizable: true

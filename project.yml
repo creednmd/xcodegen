@@ -1,0 +1,30 @@
+# https://github.com/yonaskolb/XcodeGen
+
+# brew install xcodegen
+# cd <Project Directory>
+# xcodegen
+
+name: DemoProject
+
+include:
+  - targets.yml
+  - schemes.yml
+
+options:
+  bundleIdPrefix: uk.creed
+  usesTabs: false
+  indentWidth: 2
+  tabWidth: 2
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+  groupSortPosition: bottom
+  groupOrdering:
+    - order: [Sources, UnitTests, UITests, Packages, Products]
+
+packages:
+  Styles:
+    path: "Modules/Styles"
+
+  ComposableArchitecture:
+    version: 0.9.0
+    url: https://github.com/pointfreeco/swift-composable-architecture.git
